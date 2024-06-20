@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Strader - Most Active Indian Large Cap Stocks</title>
-    <link rel="icon" href="https://assets.example.com/icons/groww.ico" type="image/x-icon"> <!-- Replace the href with the actual path to your favicon -->
+    <title>Most Active Indian Large Cap Stocks</title>
     <style id="dynamicStyles"></style>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -29,6 +28,13 @@
                     padding: 20px;
                     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
                 }
+                 footer {
+                    text-align: center;
+                    padding: 20px;
+                    margin-top: 20px;
+                    background-color: #004d99;
+                    color: white;
+                }
                 table {
                     width: 100%;
                     border-collapse: collapse;
@@ -45,21 +51,26 @@
                 tbody tr:hover {
                     background-color: #f1f1f1;
                 }
-                footer {
-                    text-align: center;
-                    padding: 20px;
-                    margin-top: 20px;
-                    background-color: #004d99;
+                .watchlist-button {
+                    background-color: #008CBA;
                     color: white;
+                    border: none;
+                    padding: 5px 10px;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;
+                    font-size: 14px;
+                    margin-right: 10px;
+                    cursor: pointer;
                 }
-            ;
+            `;
             document.getElementById('dynamicStyles').innerHTML = styles;
         });
     </script>
 </head>
 <body>
     <header>
-        <h1>Strader - Most Active Indian Large Cap Stocks</h1>
+        <h1>Most Active Indian Large Cap Stocks</h1>
     </header>
     <main>
         <table id="stocksTable">
@@ -71,6 +82,7 @@
                     <th>Change</th>
                     <th>% Change</th>
                     <th>Volume</th>
+                    <th>Watchlist</th> <!-- Added table header for consistency -->
                 </tr>
             </thead>
             <tbody>
@@ -81,6 +93,7 @@
                     <td>+20.75</td>
                     <td>+0.91%</td>
                     <td>3,000,000</td>
+                    <td><button class="watchlist-button">Watchlist</button></td>
                 </tr>
                 <tr>
                     <td>TCS</td>
@@ -89,6 +102,7 @@
                     <td>-15.50</td>
                     <td>-0.48%</td>
                     <td>1,500,000</td>
+                    <td><button class="watchlist-button">Watchlist</button></td>
                 </tr>
             </tbody>
         </table>
