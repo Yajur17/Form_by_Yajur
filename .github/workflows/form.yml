@@ -24,4 +24,4 @@ jobs:
           
       # Deploy website to S3
       - name: Deploy to S3
-        run: aws s3 sync ./website s3://mailstreambyyajur --delete --exclude ".git/*"
+        run: aws s3 sync ./website s3://mailstreambyyajur --delete
