@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Name Submission Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="email"] {
+            width: calc(100% - 22px); /* Subtract padding and border width */
+            padding: 10px;
+            margin: 5px 0 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            background-color: #ddd; /* Change background color of input boxes */
+        }
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        #answers {
+            margin-top: 20px;
+            background-color: #f0f0f0;
+            border-radius: 4px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        #answers h2 {
+            margin: 0; /* Remove margin of h2 to eliminate extra space */
+            padding: 10px; /* Add padding to the heading */
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Enter Your Information</h1>
+
+    <form action="#" method="post" id="infoForm">
+        <label for="first_name">First Name:</label>
+        <input type="text" id="first_name" name="first_name" required>
+        <br>
+        <label for="last_name">Last Name:</label>
+        <input type="text" id="last_name" name="last_name" required>
+        <br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="answers"></div>
+
+</div>
+
+<script>
+    document.getElementById('infoForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form submission
+        showAnswers();
+    });
+
+    document.getElementById('infoForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form submission
+
+        var firstName = document.getElementById('first_name').value;
+        var lastName = document.getElementById('last_name').value;
+        var email = document.getElementById('email').value;
+
+        // Construct form data
+        var formData = new FormData();
+        formData.append('first_name', firstName);
+        formData.append('last_name', lastName);
+        formData.append('email', email);
+
+        // Make AJAX POST request to API endpoint
+        fetch('https://lx7lmafa64qluhe557b65pfenu0hwesx.lambda-url.ap-south-1.on.aws/', {
+            method: 'POST',
+            body: formData
+        })
+        
+        
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Handle successful response
+            console.log('Response:', data);
+            alert('Data submitted successfully!');
+        })
+        .catch(error => {
+            // Handle errors
+            console.error('Error:', error);
+            alert('An error occurred while submitting the data.');
+        });
+    });
+
+
+    function showAnswers() {
+        // Get values from form
+        var firstName = document.getElementById('first_name').value;
+        var lastName = document.getElementById('last_name').value;
+        var email = document.getElementById('email').value
